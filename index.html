@@ -64,7 +64,7 @@
     }
 
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 40px 20px;
       position: relative;
@@ -196,18 +196,34 @@
       margin: 30px 0;
     }
 
+    /* Category Headers */
+    .category-header {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--accent-coral);
+      margin: 24px 0 12px;
+      padding-left: 8px;
+      border-left: 4px solid var(--accent-coral);
+    }
+
+    .grade-6 .category-header {
+      color: var(--accent-teal);
+      border-left-color: var(--accent-teal);
+    }
+
     /* Topics Grid */
     .topics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 16px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
     .topic-btn {
       background: white;
       border: 3px solid transparent;
-      padding: 24px 16px;
+      padding: 16px 12px;
       border-radius: var(--radius-md);
       cursor: pointer;
       transition: all 0.2s;
@@ -229,20 +245,39 @@
     .topic-name {
       font-weight: 700;
       color: var(--text-primary);
-      font-size: 1.1rem;
+      font-size: 0.95rem;
     }
 
     .topic-stats {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-secondary);
-      margin-top: 8px;
+      margin-top: 6px;
+    }
+
+    .select-all-btn {
+      background: var(--bg-secondary);
+      border: none;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      font-family: 'Nunito', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .select-all-btn:hover {
+      background: var(--accent-yellow);
+      color: var(--text-primary);
     }
 
     .start-btn {
       display: block;
       width: 100%;
       max-width: 300px;
-      margin: 0 auto;
+      margin: 30px auto 0;
       padding: 20px 40px;
       background: linear-gradient(135deg, var(--accent-coral), var(--accent-purple));
       border: none;
@@ -339,7 +374,7 @@
 
     .question {
       font-family: 'Fredoka', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 30px;
@@ -579,13 +614,349 @@
     /* Responsive */
     @media (max-width: 600px) {
       .logo { font-size: 2.8rem; }
-      .question { font-size: 1.6rem; }
+      .question { font-size: 1.5rem; }
       .grade-btn { padding: 30px 40px; }
       .grade-emoji { font-size: 2.5rem; }
       .problem-card { padding: 30px 20px; }
       .answer-input { font-size: 1.4rem; padding: 16px 20px; }
       .stats-bar { padding: 12px 16px; }
       .stat-value { font-size: 1.4rem; }
+      .topics-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+    }
+
+    /* Parent Dashboard Styles */
+    .parent-btn {
+      display: block;
+      margin: 40px auto 0;
+      padding: 14px 28px;
+      background: white;
+      border: 3px solid var(--accent-purple);
+      border-radius: var(--radius-md);
+      color: var(--accent-purple);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .parent-btn:hover {
+      background: var(--accent-purple);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Quiz Progress Bar */
+    .progress-bar-container {
+      background: white;
+      border-radius: 50px;
+      height: 12px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .quiz-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-teal), var(--accent-mint));
+      border-radius: 50px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Quiz Complete Screen */
+    .complete-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: var(--shadow-medium);
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .complete-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--accent-yellow), var(--accent-coral), var(--accent-purple), var(--accent-teal));
+    }
+
+    .complete-emoji {
+      font-size: 5rem;
+      margin-bottom: 16px;
+      animation: bounce 0.6s ease;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .complete-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 2rem;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+
+    .complete-score {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-coral), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .complete-percentage {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 2rem;
+      color: var(--accent-teal);
+      margin-bottom: 16px;
+    }
+
+    .complete-message {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+    }
+
+    .complete-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .complete-stat {
+      text-align: center;
+    }
+
+    .complete-stat-label {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .complete-stat-value {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-teal);
+    }
+
+    .complete-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .dashboard-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-medium);
+      margin-bottom: 24px;
+    }
+
+    .dashboard-text {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .dashboard-text.warning {
+      color: var(--accent-coral);
+    }
+
+    .progress-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px 20px;
+      background: var(--bg-primary);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--accent-teal), var(--accent-mint));
+      color: white;
+    }
+
+    .progress-content {
+      background: var(--bg-primary);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .progress-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .progress-row:last-child {
+      border-bottom: none;
+    }
+
+    .progress-label {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .progress-value {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      color: var(--accent-teal);
+    }
+
+    .progress-value.highlight {
+      color: var(--accent-coral);
+      font-size: 1.2rem;
+    }
+
+    .topic-progress {
+      margin-top: 16px;
+    }
+
+    .topic-progress-header {
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .topic-progress-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 8px;
+    }
+
+    .topic-progress-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: white;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+    }
+
+    .topic-progress-name {
+      color: var(--text-secondary);
+    }
+
+    .topic-progress-score {
+      font-weight: 700;
+      color: var(--accent-teal);
+    }
+
+    .topic-progress-score.weak {
+      color: var(--accent-coral);
+    }
+
+    .topic-progress-score.strong {
+      color: #00897B;
+    }
+
+    .code-display {
+      background: var(--bg-primary);
+      border: 2px dashed var(--accent-purple);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      word-break: break-all;
+      margin-bottom: 16px;
+      min-height: 60px;
+      color: var(--text-primary);
+    }
+
+    .code-input {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid var(--bg-secondary);
+      border-radius: var(--radius-md);
+      font-family: monospace;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .code-input:focus {
+      border-color: var(--accent-teal);
+    }
+
+    .action-btn {
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--accent-teal), var(--accent-mint));
+      border: none;
+      border-radius: var(--radius-md);
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .action-btn.secondary {
+      background: white;
+      color: var(--accent-teal);
+      border: 2px solid var(--accent-teal);
+    }
+
+    .action-btn.danger {
+      background: linear-gradient(135deg, var(--accent-coral), #F38181);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--text-primary);
+      color: white;
+      padding: 16px 32px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      z-index: 2000;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
   </style>
 </head>
@@ -594,7 +965,7 @@
     <!-- Home Screen -->
     <div id="home-screen" class="screen active home-screen">
       <h1 class="logo">MathQuest ✨</h1>
-      <p class="tagline">Math practice made fun!</p>
+      <p class="tagline">Khan Academy-aligned math practice!</p>
       <div class="grade-buttons">
         <button class="grade-btn grade-4" onclick="selectGrade(4)">
           <span class="grade-emoji">🎒</span>
@@ -605,13 +976,51 @@
           <span class="grade-label">Grade 6</span>
         </button>
       </div>
+      <button class="parent-btn" onclick="showScreen('parent-screen')">👨‍👩‍👧‍👦 Parent Dashboard</button>
+    </div>
+
+    <!-- Parent Dashboard Screen -->
+    <div id="parent-screen" class="screen">
+      <button class="back-btn" onclick="showScreen('home-screen')">← Back</button>
+      <h2 class="screen-title">Parent Dashboard 👨‍👩‍👧‍👦</h2>
+      
+      <div class="dashboard-card">
+        <h3 class="section-title">📊 Progress Overview</h3>
+        <div class="progress-tabs">
+          <button class="tab-btn active" onclick="showProgressTab(4)">Grade 4</button>
+          <button class="tab-btn" onclick="showProgressTab(6)">Grade 6</button>
+        </div>
+        <div id="progress-content" class="progress-content"></div>
+      </div>
+
+      <div class="dashboard-card">
+        <h3 class="section-title">📤 Export Progress</h3>
+        <p class="dashboard-text">Share this code to view progress on another device:</p>
+        <div class="code-display" id="export-code"></div>
+        <button class="action-btn" onclick="generateExportCode()">Generate Code</button>
+        <button class="action-btn secondary" onclick="copyExportCode()">📋 Copy</button>
+      </div>
+
+      <div class="dashboard-card">
+        <h3 class="section-title">📥 Import Progress</h3>
+        <p class="dashboard-text">Enter a code from another device to view/merge progress:</p>
+        <input type="text" id="import-code-input" class="code-input" placeholder="Paste code here...">
+        <button class="action-btn" onclick="importProgressCode()">Import & View</button>
+      </div>
+
+      <div class="dashboard-card">
+        <h3 class="section-title">🔄 Reset Progress</h3>
+        <p class="dashboard-text warning">⚠️ This will delete all saved progress!</p>
+        <button class="action-btn danger" onclick="confirmReset()">Reset All Progress</button>
+      </div>
     </div>
 
     <!-- Topics Screen -->
     <div id="topics-screen" class="screen">
       <button class="back-btn" onclick="showScreen('home-screen')">← Back</button>
       <h2 class="screen-title">Choose Topics 📚</h2>
-      <div id="topics-grid" class="topics-grid"></div>
+      <button class="select-all-btn" onclick="toggleSelectAll()">Select All / Deselect All</button>
+      <div id="topics-container"></div>
       <button id="start-btn" class="start-btn" disabled onclick="startPractice()">Start Practice! 🚀</button>
       <div class="nav-bar">
         <button class="nav-btn" onclick="showScreen('stats-screen')">📊 View Stats</button>
@@ -621,7 +1030,11 @@
     <!-- Practice Screen -->
     <div id="practice-screen" class="screen">
       <div class="stats-bar">
-        <button class="back-btn" onclick="showScreen('topics-screen')">← Topics</button>
+        <button class="back-btn" onclick="endQuiz()">← End Quiz</button>
+        <div class="stat-item">
+          <div id="question-progress" class="stat-value">1/20</div>
+          <div class="stat-label">Question</div>
+        </div>
         <div class="stat-item">
           <div id="correct-count" class="stat-value">0</div>
           <div class="stat-label">Correct</div>
@@ -630,22 +1043,51 @@
           <div id="streak-count" class="stat-value streak">🔥 0</div>
           <div class="stat-label">Streak</div>
         </div>
-        <div class="stat-item">
-          <div id="accuracy-count" class="stat-value accuracy">0%</div>
-          <div class="stat-label">Accuracy</div>
-        </div>
+      </div>
+
+      <div class="progress-bar-container">
+        <div id="quiz-progress-bar" class="quiz-progress-bar"></div>
       </div>
 
       <div class="problem-card">
         <span id="topic-tag" class="topic-tag">Topic</span>
         <div id="question" class="question">Loading...</div>
-        <input type="number" step="any" id="answer-input" class="answer-input" placeholder="?" autofocus>
+        <input type="text" id="answer-input" class="answer-input" placeholder="?" autocomplete="off">
         <br>
         <button id="submit-btn" class="submit-btn" onclick="submitAnswer()">Check Answer ✓</button>
         <div id="feedback" class="feedback" style="display: none;"></div>
       </div>
 
-      <button class="nav-btn" style="display: block; margin: 0 auto;" onclick="generateProblem()">Skip →</button>
+      <button class="nav-btn" style="display: block; margin: 0 auto;" onclick="skipQuestion()">Skip →</button>
+    </div>
+
+    <!-- Quiz Complete Screen -->
+    <div id="complete-screen" class="screen">
+      <div class="complete-card">
+        <div class="complete-emoji" id="complete-emoji">🎉</div>
+        <h2 class="complete-title">Quiz Complete!</h2>
+        <div class="complete-score">
+          <span id="final-score">0</span> / <span id="total-questions">20</span>
+        </div>
+        <div class="complete-percentage" id="complete-percentage">0%</div>
+        <div class="complete-message" id="complete-message">Great job!</div>
+        
+        <div class="complete-stats">
+          <div class="complete-stat">
+            <span class="complete-stat-label">Best Streak</span>
+            <span class="complete-stat-value" id="quiz-best-streak">0</span>
+          </div>
+          <div class="complete-stat">
+            <span class="complete-stat-label">Topics Covered</span>
+            <span class="complete-stat-value" id="topics-covered">0</span>
+          </div>
+        </div>
+
+        <div class="complete-actions">
+          <button class="action-btn" onclick="restartQuiz()">🔄 Try Again</button>
+          <button class="action-btn secondary" onclick="showScreen('topics-screen')">📚 Change Topics</button>
+        </div>
+      </div>
     </div>
 
     <!-- Stats Screen -->
@@ -682,30 +1124,28 @@
   <div id="confetti-container" class="confetti-container"></div>
 
   <script>
-    // State
+    // ==================== STATE ====================
     let currentGrade = null;
     let selectedTopics = [];
     let currentProblem = null;
-    let stats = JSON.parse(localStorage.getItem('mathQuestStats')) || {
+    
+    // Quiz state
+    const QUESTIONS_PER_QUIZ = 20;
+    let quizQuestions = [];
+    let currentQuestionIndex = 0;
+    let quizCorrect = 0;
+    let quizStreak = 0;
+    let quizBestStreak = 0;
+    let topicsUsedInQuiz = new Set();
+    
+    let stats = JSON.parse(localStorage.getItem('mathQuestStats2')) || {
       grade4: { correct: 0, total: 0, streak: 0, bestStreak: 0, byTopic: {} },
       grade6: { correct: 0, total: 0, streak: 0, bestStreak: 0, byTopic: {} },
       achievements: []
     };
 
-    // Topic configurations
-    const grade4Topics = ['addition4', 'subtraction4', 'multiplication4', 'division4', 'rounding4', 'wordProblem4'];
-    const grade6Topics = ['addition6', 'subtraction6', 'multiplication6', 'division6', 'fractions6', 'decimals6', 'percentages6', 'algebra6', 'wordProblem6'];
-
-    const topicLabels = {
-      addition4: 'Addition', subtraction4: 'Subtraction', multiplication4: 'Multiplication',
-      division4: 'Division', rounding4: 'Rounding', wordProblem4: 'Word Problems',
-      addition6: 'Addition', subtraction6: 'Subtraction', multiplication6: 'Multiplication',
-      division6: 'Division', fractions6: 'Fractions', decimals6: 'Decimals',
-      percentages6: 'Percentages', algebra6: 'Algebra', wordProblem6: 'Word Problems'
-    };
-
-    const encouragements = ['Amazing! 🌟', 'You got it! 🎉', 'Brilliant! 🧠', 'Super! 💪', 'Correct! ✨', 'Wow! 🚀'];
-    const tryAgains = ['Almost! Try again 💪', 'Not quite, keep going! 🌈', 'Close! One more try! ⭐'];
+    const encouragements = ['Amazing! 🌟', 'You got it! 🎉', 'Brilliant! 🧠', 'Super! 💪', 'Correct! ✨', 'Wow! 🚀', 'Perfect! 💯', 'Great job! 🏆'];
+    const tryAgains = ['Almost! Try again 💪', 'Not quite, keep going! 🌈', 'Close! One more try! ⭐', 'Keep trying! 🎯'];
 
     const allAchievements = [
       { id: 'first_correct', icon: '⭐', label: 'First Star' },
@@ -716,149 +1156,595 @@
       { id: 'master_5_topics', icon: '🎓', label: 'Topic Master' }
     ];
 
-    // Problem generators
-    const generators = {
-      addition4: () => {
-        const a = Math.floor(Math.random() * 900) + 100;
-        const b = Math.floor(Math.random() * 900) + 100;
-        return { question: `${a} + ${b}`, answer: a + b, topic: 'Addition' };
-      },
-      subtraction4: () => {
-        const a = Math.floor(Math.random() * 900) + 100;
-        const b = Math.floor(Math.random() * a);
-        return { question: `${a} − ${b}`, answer: a - b, topic: 'Subtraction' };
-      },
-      multiplication4: () => {
-        const a = Math.floor(Math.random() * 12) + 1;
-        const b = Math.floor(Math.random() * 12) + 1;
-        return { question: `${a} × ${b}`, answer: a * b, topic: 'Multiplication' };
-      },
-      division4: () => {
-        const b = Math.floor(Math.random() * 11) + 2;
-        const answer = Math.floor(Math.random() * 12) + 1;
-        const a = b * answer;
-        return { question: `${a} ÷ ${b}`, answer, topic: 'Division' };
+    // ==================== GRADE 4 TOPICS (Khan Academy aligned) ====================
+    const grade4Categories = {
+      'Place Value & Rounding': ['placeValue4', 'rounding4', 'expandedForm4', 'comparing4'],
+      'Addition & Subtraction': ['addition4', 'subtraction4', 'addSubWordProblems4'],
+      'Multiplication': ['multiplyBasic4', 'multiplyByTens4', 'multiply2x1_4', 'multiply2x2_4', 'multiplyWordProblems4'],
+      'Division': ['divideBasic4', 'divideWithRemainder4', 'divisionWordProblems4'],
+      'Factors & Multiples': ['factors4', 'multiples4', 'primeComposite4', 'patterns4'],
+      'Fractions': ['equivFractions4', 'compareFractions4', 'addFractions4', 'subFractions4', 'mixedNumbers4', 'multiplyFracByWhole4'],
+      'Decimals': ['decimalPlace4', 'decimalFraction4', 'compareDecimals4'],
+      'Measurement': ['unitConversion4', 'timeProblems4', 'moneyProblems4', 'areaPerimeter4'],
+      'Geometry': ['angles4', 'angleTypes4', 'lines4', 'symmetry4', 'shapes4']
+    };
+
+    const grade4Labels = {
+      placeValue4: 'Place Value', rounding4: 'Rounding', expandedForm4: 'Expanded Form', comparing4: 'Comparing Numbers',
+      addition4: 'Addition', subtraction4: 'Subtraction', addSubWordProblems4: 'Word Problems',
+      multiplyBasic4: 'Times Tables', multiplyByTens4: 'Multiply by 10s', multiply2x1_4: '2×1 Digit', multiply2x2_4: '2×2 Digit', multiplyWordProblems4: 'Multiply Words',
+      divideBasic4: 'Basic Division', divideWithRemainder4: 'With Remainders', divisionWordProblems4: 'Division Words',
+      factors4: 'Factor Pairs', multiples4: 'Multiples', primeComposite4: 'Prime/Composite', patterns4: 'Patterns',
+      equivFractions4: 'Equivalent Fractions', compareFractions4: 'Compare Fractions', addFractions4: 'Add Fractions', subFractions4: 'Subtract Fractions', mixedNumbers4: 'Mixed Numbers', multiplyFracByWhole4: 'Fraction × Whole',
+      decimalPlace4: 'Decimal Place Value', decimalFraction4: 'Decimals ↔ Fractions', compareDecimals4: 'Compare Decimals',
+      unitConversion4: 'Unit Conversion', timeProblems4: 'Time Problems', moneyProblems4: 'Money Problems', areaPerimeter4: 'Area & Perimeter',
+      angles4: 'Measuring Angles', angleTypes4: 'Angle Types', lines4: 'Lines & Rays', symmetry4: 'Symmetry', shapes4: 'Shapes'
+    };
+
+    // ==================== GRADE 6 TOPICS (Khan Academy aligned) ====================
+    const grade6Categories = {
+      'Ratios & Rates': ['ratios6', 'rates6', 'unitRates6', 'ratioWordProblems6'],
+      'Percentages': ['percentBasics6', 'percentOfNumber6', 'percentWordProblems6', 'percentDecimalFraction6'],
+      'Arithmetic Operations': ['addSubDecimals6', 'multiplyDecimals6', 'divideDecimals6', 'divideFractions6', 'orderOfOps6'],
+      'Negative Numbers': ['negativeBasics6', 'compareNegatives6', 'absoluteValue6', 'numberLine6'],
+      'Exponents': ['exponents6', 'powersOfTen6'],
+      'Factors & Multiples': ['gcf6', 'lcm6', 'gcfLcmWordProblems6'],
+      'Expressions & Variables': ['evaluateExpressions6', 'writeExpressions6', 'combiningLikeTerms6', 'distributive6'],
+      'Equations & Inequalities': ['oneStepEquations6', 'inequalities6'],
+      'Coordinate Plane': ['coordinatePlane6', 'distance6', 'reflections6', 'polygonsCoord6'],
+      'Geometry': ['areaTriangles6', 'areaParallelograms6', 'areaTrapezoids6', 'surfaceArea6', 'volume6'],
+      'Statistics': ['mean6', 'median6', 'range6', 'dataInterpretation6']
+    };
+
+    const grade6Labels = {
+      ratios6: 'Ratios', rates6: 'Rates', unitRates6: 'Unit Rates', ratioWordProblems6: 'Ratio Words',
+      percentBasics6: 'Percent Basics', percentOfNumber6: 'Percent of Number', percentWordProblems6: 'Percent Words', percentDecimalFraction6: '% ↔ Dec ↔ Frac',
+      addSubDecimals6: 'Add/Sub Decimals', multiplyDecimals6: 'Multiply Decimals', divideDecimals6: 'Divide Decimals', divideFractions6: 'Divide Fractions', orderOfOps6: 'Order of Operations',
+      negativeBasics6: 'Negative Numbers', compareNegatives6: 'Compare Negatives', absoluteValue6: 'Absolute Value', numberLine6: 'Number Line',
+      exponents6: 'Exponents', powersOfTen6: 'Powers of 10',
+      gcf6: 'GCF', lcm6: 'LCM', gcfLcmWordProblems6: 'GCF/LCM Words',
+      evaluateExpressions6: 'Evaluate Expressions', writeExpressions6: 'Write Expressions', combiningLikeTerms6: 'Combine Like Terms', distributive6: 'Distributive Property',
+      oneStepEquations6: 'One-Step Equations', inequalities6: 'Inequalities',
+      coordinatePlane6: 'Coordinate Plane', distance6: 'Distance', reflections6: 'Reflections', polygonsCoord6: 'Polygons on Grid',
+      areaTriangles6: 'Area of Triangles', areaParallelograms6: 'Area of Parallelograms', areaTrapezoids6: 'Area of Trapezoids', surfaceArea6: 'Surface Area', volume6: 'Volume',
+      mean6: 'Mean (Average)', median6: 'Median', range6: 'Range', dataInterpretation6: 'Data Interpretation'
+    };
+
+    // ==================== HELPER FUNCTIONS ====================
+    function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+    function randChoice(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+    function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+    function lcm(a, b) { return (a * b) / gcd(a, b); }
+    function getFactors(n) { const f = []; for (let i = 1; i <= Math.sqrt(n); i++) { if (n % i === 0) { f.push(i); if (i !== n/i) f.push(n/i); } } return f.sort((a,b) => a-b); }
+    function isPrime(n) { if (n < 2) return false; for (let i = 2; i <= Math.sqrt(n); i++) { if (n % i === 0) return false; } return true; }
+
+    // ==================== GRADE 4 GENERATORS ====================
+    const generators4 = {
+      placeValue4: () => {
+        const num = randInt(1000, 99999);
+        const places = ['ones', 'tens', 'hundreds', 'thousands', 'ten thousands'];
+        const placeIdx = randInt(0, Math.min(4, num.toString().length - 1));
+        const place = places[placeIdx];
+        const answer = Math.floor(num / Math.pow(10, placeIdx)) % 10;
+        return { question: `What digit is in the ${place} place of ${num.toLocaleString()}?`, answer, topic: 'Place Value' };
       },
       rounding4: () => {
-        const num = Math.floor(Math.random() * 9000) + 1000;
-        const places = [10, 100, 1000][Math.floor(Math.random() * 3)];
-        const answer = Math.round(num / places) * places;
-        return { question: `Round ${num} to the nearest ${places}`, answer, topic: 'Rounding' };
+        const num = randInt(100, 9999);
+        const places = [10, 100, 1000];
+        const place = randChoice(places.filter(p => p < num));
+        const answer = Math.round(num / place) * place;
+        return { question: `Round ${num.toLocaleString()} to the nearest ${place.toLocaleString()}`, answer, topic: 'Rounding' };
       },
-      wordProblem4: () => {
+      expandedForm4: () => {
+        const num = randInt(100, 9999);
+        const digits = num.toString().split('').reverse();
+        const parts = digits.map((d, i) => parseInt(d) * Math.pow(10, i)).filter(x => x > 0);
+        const question = parts.reverse().join(' + ') + ' = ?';
+        return { question, answer: num, topic: 'Expanded Form' };
+      },
+      comparing4: () => {
+        const a = randInt(1000, 99999);
+        let b = a + randInt(-1000, 1000);
+        if (b < 0) b = randInt(1000, 99999);
+        const answer = a > b ? 1 : (a < b ? -1 : 0);
+        const symbols = { '-1': '<', '0': '=', '1': '>' };
+        return { question: `Compare: ${a.toLocaleString()} __ ${b.toLocaleString()}<br>Enter: -1 for <, 0 for =, 1 for >`, answer, topic: 'Comparing Numbers', acceptStrings: ['<', '=', '>'], answerMap: { '<': -1, '=': 0, '>': 1 } };
+      },
+      addition4: () => {
+        const a = randInt(100, 9999);
+        const b = randInt(100, 9999);
+        return { question: `${a.toLocaleString()} + ${b.toLocaleString()}`, answer: a + b, topic: 'Addition' };
+      },
+      subtraction4: () => {
+        const a = randInt(500, 9999);
+        const b = randInt(100, a - 1);
+        return { question: `${a.toLocaleString()} − ${b.toLocaleString()}`, answer: a - b, topic: 'Subtraction' };
+      },
+      addSubWordProblems4: () => {
         const templates = [
-          () => {
-            const a = Math.floor(Math.random() * 20) + 5;
-            const b = Math.floor(Math.random() * 20) + 5;
-            return { question: `You have ${a} apples and get ${b} more. How many apples do you have?`, answer: a + b };
-          },
-          () => {
-            const groups = Math.floor(Math.random() * 8) + 2;
-            const perGroup = Math.floor(Math.random() * 10) + 2;
-            return { question: `There are ${groups} bags with ${perGroup} candies each. How many candies in total?`, answer: groups * perGroup };
-          },
-          () => {
-            const total = Math.floor(Math.random() * 50) + 20;
-            const given = Math.floor(Math.random() * (total - 5)) + 1;
-            return { question: `You had ${total} stickers and gave away ${given}. How many do you have left?`, answer: total - given };
-          }
+          () => { const a = randInt(50, 500); const b = randInt(50, 500); return { q: `A store had ${a} apples. They received ${b} more. How many apples now?`, a: a + b }; },
+          () => { const a = randInt(100, 1000); const b = randInt(50, a - 10); return { q: `There were ${a} books in the library. ${b} were checked out. How many are left?`, a: a - b }; },
+          () => { const a = randInt(100, 500); const b = randInt(100, 500); const c = randInt(50, 200); return { q: `Sam has ${a} stickers, gets ${b} more, then gives away ${c}. How many now?`, a: a + b - c }; }
         ];
-        const template = templates[Math.floor(Math.random() * templates.length)]();
-        return { ...template, topic: 'Word Problems' };
+        const t = randChoice(templates)();
+        return { question: t.q, answer: t.a, topic: 'Word Problems' };
       },
-      addition6: () => {
-        const a = Math.floor(Math.random() * 9000) + 1000;
-        const b = Math.floor(Math.random() * 9000) + 1000;
-        return { question: `${a} + ${b}`, answer: a + b, topic: 'Addition' };
+      multiplyBasic4: () => {
+        const a = randInt(2, 12);
+        const b = randInt(2, 12);
+        return { question: `${a} × ${b}`, answer: a * b, topic: 'Times Tables' };
       },
-      subtraction6: () => {
-        const a = Math.floor(Math.random() * 9000) + 1000;
-        const b = Math.floor(Math.random() * a);
-        return { question: `${a} − ${b}`, answer: a - b, topic: 'Subtraction' };
+      multiplyByTens4: () => {
+        const a = randInt(1, 99);
+        const b = randChoice([10, 100, 1000]);
+        return { question: `${a} × ${b.toLocaleString()}`, answer: a * b, topic: 'Multiply by 10s' };
       },
-      multiplication6: () => {
-        const a = Math.floor(Math.random() * 50) + 10;
-        const b = Math.floor(Math.random() * 20) + 5;
-        return { question: `${a} × ${b}`, answer: a * b, topic: 'Multiplication' };
+      multiply2x1_4: () => {
+        const a = randInt(10, 99);
+        const b = randInt(2, 9);
+        return { question: `${a} × ${b}`, answer: a * b, topic: '2×1 Digit Multiply' };
       },
-      division6: () => {
-        const b = Math.floor(Math.random() * 20) + 2;
-        const answer = Math.floor(Math.random() * 50) + 5;
+      multiply2x2_4: () => {
+        const a = randInt(10, 99);
+        const b = randInt(10, 99);
+        return { question: `${a} × ${b}`, answer: a * b, topic: '2×2 Digit Multiply' };
+      },
+      multiplyWordProblems4: () => {
+        const templates = [
+          () => { const a = randInt(3, 12); const b = randInt(5, 25); return { q: `${a} boxes with ${b} pencils each. Total pencils?`, a: a * b }; },
+          () => { const a = randInt(2, 8); const b = randInt(10, 50); return { q: `A pack of stickers costs $${b}. How much for ${a} packs?`, a: a * b }; }
+        ];
+        const t = randChoice(templates)();
+        return { question: t.q, answer: t.a, topic: 'Multiply Word Problems' };
+      },
+      divideBasic4: () => {
+        const b = randInt(2, 12);
+        const answer = randInt(2, 12);
         const a = b * answer;
-        return { question: `${a} ÷ ${b}`, answer, topic: 'Division' };
+        return { question: `${a} ÷ ${b}`, answer, topic: 'Basic Division' };
       },
-      fractions6: () => {
-        const types = [
-          () => {
-            const a = Math.floor(Math.random() * 5) + 1;
-            const b = Math.floor(Math.random() * 5) + 1;
-            const denom = [2, 3, 4, 5, 6][Math.floor(Math.random() * 5)];
-            return { question: `${a}/${denom} + ${b}/${denom} = ?/${denom}`, answer: a + b };
-          },
-          () => {
-            const a = Math.floor(Math.random() * 8) + 3;
-            const b = Math.floor(Math.random() * (a - 1)) + 1;
-            const denom = [2, 4, 5, 8, 10][Math.floor(Math.random() * 5)];
-            return { question: `${a}/${denom} − ${b}/${denom} = ?/${denom}`, answer: a - b };
-          }
-        ];
-        const type = types[Math.floor(Math.random() * types.length)]();
-        return { ...type, topic: 'Fractions' };
+      divideWithRemainder4: () => {
+        const b = randInt(2, 9);
+        const quotient = randInt(3, 15);
+        const remainder = randInt(1, b - 1);
+        const a = b * quotient + remainder;
+        return { question: `${a} ÷ ${b} = ? R ?<br>Enter the remainder only`, answer: remainder, topic: 'Division with Remainders' };
       },
-      decimals6: () => {
-        const a = (Math.floor(Math.random() * 100) / 10).toFixed(1);
-        const b = (Math.floor(Math.random() * 100) / 10).toFixed(1);
-        const answer = (parseFloat(a) + parseFloat(b)).toFixed(1);
-        return { question: `${a} + ${b}`, answer: parseFloat(answer), topic: 'Decimals' };
-      },
-      percentages6: () => {
-        const percent = [10, 20, 25, 50, 75][Math.floor(Math.random() * 5)];
-        const whole = [20, 40, 50, 80, 100, 200][Math.floor(Math.random() * 6)];
-        return { question: `What is ${percent}% of ${whole}?`, answer: (percent / 100) * whole, topic: 'Percentages' };
-      },
-      algebra6: () => {
-        const answer = Math.floor(Math.random() * 20) + 1;
-        const b = Math.floor(Math.random() * 15) + 1;
-        const result = answer + b;
-        return { question: `x + ${b} = ${result}. What is x?`, answer, topic: 'Algebra' };
-      },
-      wordProblem6: () => {
+      divisionWordProblems4: () => {
         const templates = [
-          () => {
-            const price = Math.floor(Math.random() * 20) + 5;
-            const qty = Math.floor(Math.random() * 8) + 2;
-            const discount = [10, 20, 25, 50][Math.floor(Math.random() * 4)];
-            const total = price * qty;
-            const discounted = total - (total * discount / 100);
-            return { question: `${qty} items cost $${price} each. With ${discount}% off, what's the total?`, answer: discounted };
-          },
-          () => {
-            const speed = [30, 40, 50, 60][Math.floor(Math.random() * 4)];
-            const time = Math.floor(Math.random() * 5) + 1;
-            return { question: `A car travels at ${speed} mph for ${time} hours. How many miles?`, answer: speed * time };
-          },
-          () => {
-            const total = Math.floor(Math.random() * 100) + 50;
-            const ratio1 = Math.floor(Math.random() * 3) + 1;
-            const ratio2 = Math.floor(Math.random() * 3) + 1;
-            const part = (total * ratio1) / (ratio1 + ratio2);
-            return { question: `Split $${total} in ratio ${ratio1}:${ratio2}. What's the larger share?`, answer: Math.max(part, total - part) };
-          }
+          () => { const b = randInt(3, 8); const ans = randInt(5, 15); const a = b * ans; return { q: `${a} cookies shared equally among ${b} friends. How many each?`, a: ans }; },
+          () => { const b = randInt(4, 10); const ans = randInt(3, 12); const a = b * ans; return { q: `${a} students in ${b} equal groups. How many per group?`, a: ans }; }
         ];
-        const template = templates[Math.floor(Math.random() * templates.length)]();
-        return { ...template, topic: 'Word Problems' };
+        const t = randChoice(templates)();
+        return { question: t.q, answer: t.a, topic: 'Division Word Problems' };
+      },
+      factors4: () => {
+        const num = randChoice([12, 16, 18, 20, 24, 28, 30, 36, 40, 42, 48]);
+        const factors = getFactors(num);
+        const testNum = randInt(2, 15);
+        const answer = factors.includes(testNum) ? 1 : 0;
+        return { question: `Is ${testNum} a factor of ${num}?<br>Enter 1 for Yes, 0 for No`, answer, topic: 'Factors' };
+      },
+      multiples4: () => {
+        const base = randInt(2, 12);
+        const n = randInt(1, 12);
+        return { question: `What is the ${n}${n===1?'st':n===2?'nd':n===3?'rd':'th'} multiple of ${base}?`, answer: base * n, topic: 'Multiples' };
+      },
+      primeComposite4: () => {
+        const num = randInt(2, 50);
+        const answer = isPrime(num) ? 1 : 0;
+        return { question: `Is ${num} prime?<br>Enter 1 for Prime, 0 for Composite`, answer, topic: 'Prime/Composite' };
+      },
+      patterns4: () => {
+        const start = randInt(1, 10);
+        const step = randInt(2, 8);
+        const terms = [start, start + step, start + 2*step, start + 3*step];
+        return { question: `Pattern: ${terms.join(', ')}, ?<br>What comes next?`, answer: start + 4*step, topic: 'Patterns' };
+      },
+      equivFractions4: () => {
+        const denom1 = randChoice([2, 3, 4, 5, 6]);
+        const num1 = randInt(1, denom1 - 1);
+        const mult = randInt(2, 5);
+        const denom2 = denom1 * mult;
+        return { question: `${num1}/${denom1} = ?/${denom2}`, answer: num1 * mult, topic: 'Equivalent Fractions' };
+      },
+      compareFractions4: () => {
+        const d = randChoice([4, 6, 8, 10, 12]);
+        const n1 = randInt(1, d - 1);
+        const n2 = randInt(1, d - 1);
+        const answer = n1 > n2 ? 1 : (n1 < n2 ? -1 : 0);
+        return { question: `Compare: ${n1}/${d} __ ${n2}/${d}<br>Enter: -1 for <, 0 for =, 1 for >`, answer, topic: 'Compare Fractions' };
+      },
+      addFractions4: () => {
+        const d = randChoice([2, 3, 4, 5, 6, 8, 10]);
+        const a = randInt(1, d - 1);
+        const b = randInt(1, d - a);
+        return { question: `${a}/${d} + ${b}/${d} = ?/${d}<br>Enter numerator only`, answer: a + b, topic: 'Add Fractions' };
+      },
+      subFractions4: () => {
+        const d = randChoice([2, 3, 4, 5, 6, 8, 10]);
+        const a = randInt(2, d);
+        const b = randInt(1, a - 1);
+        return { question: `${a}/${d} − ${b}/${d} = ?/${d}<br>Enter numerator only`, answer: a - b, topic: 'Subtract Fractions' };
+      },
+      mixedNumbers4: () => {
+        const whole = randInt(1, 5);
+        const denom = randChoice([2, 3, 4, 5, 6]);
+        const num = randInt(1, denom - 1);
+        const improper = whole * denom + num;
+        if (Math.random() < 0.5) {
+          return { question: `Convert ${whole} ${num}/${denom} to improper fraction<br>Enter numerator (denominator is ${denom})`, answer: improper, topic: 'Mixed Numbers' };
+        } else {
+          return { question: `Convert ${improper}/${denom} to mixed number<br>Enter the whole number part`, answer: whole, topic: 'Mixed Numbers' };
+        }
+      },
+      multiplyFracByWhole4: () => {
+        const whole = randInt(2, 10);
+        const denom = randChoice([2, 3, 4, 5, 6]);
+        const num = randInt(1, denom - 1);
+        return { question: `${whole} × ${num}/${denom} = ?/${denom}<br>Enter numerator only`, answer: whole * num, topic: 'Fraction × Whole' };
+      },
+      decimalPlace4: () => {
+        const num = (randInt(1, 99) / 10).toFixed(1);
+        const place = Math.random() < 0.5 ? 'ones' : 'tenths';
+        const answer = place === 'ones' ? Math.floor(parseFloat(num)) : parseInt(num.split('.')[1]);
+        return { question: `What digit is in the ${place} place of ${num}?`, answer, topic: 'Decimal Place Value' };
+      },
+      decimalFraction4: () => {
+        const num = randInt(1, 9);
+        if (Math.random() < 0.5) {
+          return { question: `Convert ${num}/10 to a decimal<br>Enter as 0.X`, answer: num / 10, topic: 'Decimals ↔ Fractions', tolerance: 0.001 };
+        } else {
+          return { question: `Convert 0.${num} to a fraction<br>Enter numerator (denominator is 10)`, answer: num, topic: 'Decimals ↔ Fractions' };
+        }
+      },
+      compareDecimals4: () => {
+        const a = (randInt(1, 99) / 10).toFixed(1);
+        const b = (randInt(1, 99) / 10).toFixed(1);
+        const answer = parseFloat(a) > parseFloat(b) ? 1 : (parseFloat(a) < parseFloat(b) ? -1 : 0);
+        return { question: `Compare: ${a} __ ${b}<br>Enter: -1 for <, 0 for =, 1 for >`, answer, topic: 'Compare Decimals' };
+      },
+      unitConversion4: () => {
+        const conversions = [
+          { from: 'feet', to: 'inches', mult: 12 },
+          { from: 'yards', to: 'feet', mult: 3 },
+          { from: 'meters', to: 'centimeters', mult: 100 },
+          { from: 'kilograms', to: 'grams', mult: 1000 },
+          { from: 'liters', to: 'milliliters', mult: 1000 }
+        ];
+        const c = randChoice(conversions);
+        const val = randInt(1, 10);
+        return { question: `${val} ${c.from} = ? ${c.to}`, answer: val * c.mult, topic: 'Unit Conversion' };
+      },
+      timeProblems4: () => {
+        const startH = randInt(1, 11);
+        const startM = randChoice([0, 15, 30, 45]);
+        const addM = randChoice([15, 30, 45, 60, 90]);
+        const totalM = startH * 60 + startM + addM;
+        const endH = Math.floor(totalM / 60) % 12 || 12;
+        const endM = totalM % 60;
+        return { question: `A movie starts at ${startH}:${startM.toString().padStart(2,'0')} and is ${addM} minutes long.<br>What hour does it end? (just the hour)`, answer: endH, topic: 'Time Problems' };
+      },
+      moneyProblems4: () => {
+        const price = randInt(1, 20);
+        const qty = randInt(2, 5);
+        const paid = qty * price + randInt(1, 10);
+        const change = paid - (qty * price);
+        return { question: `Items cost $${price} each. You buy ${qty} and pay $${paid}.<br>What's your change?`, answer: change, topic: 'Money Problems' };
+      },
+      areaPerimeter4: () => {
+        const l = randInt(3, 15);
+        const w = randInt(3, 15);
+        if (Math.random() < 0.5) {
+          return { question: `Rectangle: length ${l}, width ${w}<br>What is the area?`, answer: l * w, topic: 'Area' };
+        } else {
+          return { question: `Rectangle: length ${l}, width ${w}<br>What is the perimeter?`, answer: 2 * (l + w), topic: 'Perimeter' };
+        }
+      },
+      angles4: () => {
+        const angle = randInt(10, 170);
+        const type = angle < 90 ? 'acute' : (angle === 90 ? 'right' : 'obtuse');
+        return { question: `An angle measures ${angle}°.<br>What type? Enter: 1=acute, 2=right, 3=obtuse`, answer: angle < 90 ? 1 : (angle === 90 ? 2 : 3), topic: 'Angle Types' };
+      },
+      angleTypes4: () => {
+        const a = randInt(20, 160);
+        const b = 180 - a;
+        return { question: `Two angles on a straight line.<br>One is ${a}°. What is the other?`, answer: b, topic: 'Supplementary Angles' };
+      },
+      lines4: () => {
+        const types = [
+          { q: 'Two lines that never meet are called...', a: 1, hint: '1=parallel, 2=perpendicular' },
+          { q: 'Two lines that meet at 90° are called...', a: 2, hint: '1=parallel, 2=perpendicular' }
+        ];
+        const t = randChoice(types);
+        return { question: `${t.q}<br>${t.hint}`, answer: t.a, topic: 'Lines' };
+      },
+      symmetry4: () => {
+        const shapes = [
+          { name: 'square', lines: 4 },
+          { name: 'rectangle', lines: 2 },
+          { name: 'equilateral triangle', lines: 3 },
+          { name: 'circle', lines: 100 }
+        ];
+        const s = randChoice(shapes.slice(0, 3));
+        return { question: `How many lines of symmetry does a ${s.name} have?`, answer: s.lines, topic: 'Symmetry' };
+      },
+      shapes4: () => {
+        const shapes = [
+          { name: 'triangle', sides: 3 },
+          { name: 'quadrilateral', sides: 4 },
+          { name: 'pentagon', sides: 5 },
+          { name: 'hexagon', sides: 6 },
+          { name: 'octagon', sides: 8 }
+        ];
+        const s = randChoice(shapes);
+        return { question: `How many sides does a ${s.name} have?`, answer: s.sides, topic: 'Shapes' };
       }
     };
 
-    // UI Functions
-    function showScreen(screenId) {
-      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      document.getElementById(screenId).classList.add('active');
-      
-      if (screenId === 'stats-screen') {
-        updateStatsScreen();
+    // ==================== GRADE 6 GENERATORS ====================
+    const generators6 = {
+      ratios6: () => {
+        const a = randInt(2, 10);
+        const b = randInt(2, 10);
+        const mult = randInt(2, 5);
+        return { question: `If the ratio is ${a}:${b}, and the first part is ${a * mult}, what is the second part?`, answer: b * mult, topic: 'Ratios' };
+      },
+      rates6: () => {
+        const miles = randInt(100, 300);
+        const hours = randInt(2, 5);
+        return { question: `A car travels ${miles} miles in ${hours} hours.<br>What is the speed in mph?`, answer: miles / hours, topic: 'Rates', tolerance: 0.01 };
+      },
+      unitRates6: () => {
+        const items = randInt(3, 10);
+        const cost = items * randInt(2, 8);
+        return { question: `${items} items cost $${cost}.<br>What is the cost per item?`, answer: cost / items, topic: 'Unit Rates', tolerance: 0.01 };
+      },
+      ratioWordProblems6: () => {
+        const r1 = randInt(1, 5);
+        const r2 = randInt(1, 5);
+        const total = (r1 + r2) * randInt(3, 8);
+        const part1 = (total * r1) / (r1 + r2);
+        return { question: `Divide ${total} in ratio ${r1}:${r2}.<br>What is the first part?`, answer: part1, topic: 'Ratio Word Problems' };
+      },
+      percentBasics6: () => {
+        const frac = randChoice([[1,4], [1,2], [3,4], [1,5], [2,5], [1,10]]);
+        const percent = (frac[0] / frac[1]) * 100;
+        return { question: `Convert ${frac[0]}/${frac[1]} to a percent`, answer: percent, topic: 'Percent Basics' };
+      },
+      percentOfNumber6: () => {
+        const percent = randChoice([10, 20, 25, 50, 75, 100]);
+        const num = randChoice([20, 40, 50, 80, 100, 200]);
+        return { question: `What is ${percent}% of ${num}?`, answer: (percent / 100) * num, topic: 'Percent of Number' };
+      },
+      percentWordProblems6: () => {
+        const original = randInt(20, 100);
+        const percent = randChoice([10, 20, 25]);
+        const discount = (original * percent) / 100;
+        return { question: `A $${original} item is ${percent}% off.<br>What is the sale price?`, answer: original - discount, topic: 'Percent Word Problems' };
+      },
+      percentDecimalFraction6: () => {
+        const percent = randChoice([25, 50, 75, 10, 20, 40, 60, 80]);
+        return { question: `Convert ${percent}% to a decimal`, answer: percent / 100, topic: '% ↔ Decimal', tolerance: 0.001 };
+      },
+      addSubDecimals6: () => {
+        const a = (randInt(10, 999) / 10).toFixed(1);
+        const b = (randInt(10, 999) / 10).toFixed(1);
+        if (Math.random() < 0.5) {
+          return { question: `${a} + ${b}`, answer: parseFloat(a) + parseFloat(b), topic: 'Add Decimals', tolerance: 0.01 };
+        } else {
+          const big = Math.max(parseFloat(a), parseFloat(b));
+          const small = Math.min(parseFloat(a), parseFloat(b));
+          return { question: `${big} − ${small}`, answer: big - small, topic: 'Subtract Decimals', tolerance: 0.01 };
+        }
+      },
+      multiplyDecimals6: () => {
+        const a = (randInt(1, 99) / 10).toFixed(1);
+        const b = randInt(2, 9);
+        return { question: `${a} × ${b}`, answer: parseFloat(a) * b, topic: 'Multiply Decimals', tolerance: 0.01 };
+      },
+      divideDecimals6: () => {
+        const b = randInt(2, 9);
+        const answer = randInt(1, 20);
+        const a = (b * answer).toFixed(1);
+        return { question: `${a} ÷ ${b}`, answer, topic: 'Divide Decimals', tolerance: 0.01 };
+      },
+      divideFractions6: () => {
+        const n1 = randInt(1, 5);
+        const d1 = randChoice([2, 3, 4, 5, 6]);
+        const n2 = randInt(1, 3);
+        const d2 = randChoice([2, 3, 4]);
+        const ansNum = n1 * d2;
+        const ansDen = d1 * n2;
+        const g = gcd(ansNum, ansDen);
+        return { question: `${n1}/${d1} ÷ ${n2}/${d2}<br>Enter numerator of simplified answer`, answer: ansNum / g, topic: 'Divide Fractions' };
+      },
+      orderOfOps6: () => {
+        const templates = [
+          () => { const a = randInt(2, 10); const b = randInt(2, 5); const c = randInt(1, 10); return { q: `${a} + ${b} × ${c}`, a: a + b * c }; },
+          () => { const a = randInt(10, 30); const b = randInt(2, 5); const c = randInt(1, 5); return { q: `${a} − ${b} × ${c}`, a: a - b * c }; },
+          () => { const a = randInt(2, 5); const b = randInt(2, 5); const c = randInt(1, 5); return { q: `(${a} + ${b}) × ${c}`, a: (a + b) * c }; },
+          () => { const a = randInt(2, 5); const b = 2; return { q: `${a}² + ${randInt(1,10)}`, a: a*a + randInt(1,10) }; }
+        ];
+        const t = randChoice(templates)();
+        return { question: t.q, answer: t.a, topic: 'Order of Operations' };
+      },
+      negativeBasics6: () => {
+        const a = randInt(-20, 20);
+        const b = randInt(-20, 20);
+        const op = Math.random() < 0.5 ? '+' : '−';
+        const answer = op === '+' ? a + b : a - b;
+        return { question: `${a} ${op} ${b < 0 ? '(' + b + ')' : b}`, answer, topic: 'Negative Numbers' };
+      },
+      compareNegatives6: () => {
+        const a = randInt(-20, 20);
+        const b = randInt(-20, 20);
+        const answer = a > b ? 1 : (a < b ? -1 : 0);
+        return { question: `Compare: ${a} __ ${b}<br>Enter: -1 for <, 0 for =, 1 for >`, answer, topic: 'Compare Negatives' };
+      },
+      absoluteValue6: () => {
+        const n = randInt(-50, 50);
+        return { question: `|${n}| = ?`, answer: Math.abs(n), topic: 'Absolute Value' };
+      },
+      numberLine6: () => {
+        const a = randInt(-10, 10);
+        const b = randInt(-10, 10);
+        return { question: `Distance between ${a} and ${b} on number line?`, answer: Math.abs(a - b), topic: 'Number Line' };
+      },
+      exponents6: () => {
+        const base = randInt(2, 10);
+        const exp = randInt(2, 3);
+        return { question: `${base}${exp === 2 ? '²' : '³'} = ?`, answer: Math.pow(base, exp), topic: 'Exponents' };
+      },
+      powersOfTen6: () => {
+        const num = randInt(1, 99);
+        const power = randInt(1, 4);
+        return { question: `${num} × 10${power === 1 ? '' : (power === 2 ? '²' : (power === 3 ? '³' : '⁴'))}`, answer: num * Math.pow(10, power), topic: 'Powers of 10' };
+      },
+      gcf6: () => {
+        const mult = randInt(2, 10);
+        const a = mult * randInt(2, 8);
+        const b = mult * randInt(2, 8);
+        return { question: `GCF of ${a} and ${b}?`, answer: gcd(a, b), topic: 'GCF' };
+      },
+      lcm6: () => {
+        const a = randInt(2, 12);
+        const b = randInt(2, 12);
+        return { question: `LCM of ${a} and ${b}?`, answer: lcm(a, b), topic: 'LCM' };
+      },
+      gcfLcmWordProblems6: () => {
+        const a = randInt(6, 18);
+        const b = randInt(8, 24);
+        const l = lcm(a, b);
+        return { question: `Bus A comes every ${a} min, Bus B every ${b} min.<br>Both arrive now. In how many minutes will both arrive together again?`, answer: l, topic: 'GCF/LCM Word Problems' };
+      },
+      evaluateExpressions6: () => {
+        const x = randInt(1, 10);
+        const a = randInt(1, 5);
+        const b = randInt(1, 10);
+        return { question: `If x = ${x}, evaluate: ${a}x + ${b}`, answer: a * x + b, topic: 'Evaluate Expressions' };
+      },
+      writeExpressions6: () => {
+        const n = randInt(2, 10);
+        const ops = [
+          { q: `${n} more than a number x`, template: (x) => x + n },
+          { q: `${n} times a number x`, template: (x) => n * x },
+          { q: `A number x minus ${n}`, template: (x) => x - n }
+        ];
+        const op = randChoice(ops);
+        const testX = randInt(1, 10);
+        return { question: `"${op.q}"<br>What is the value when x = ${testX}?`, answer: op.template(testX), topic: 'Write Expressions' };
+      },
+      combiningLikeTerms6: () => {
+        const a = randInt(1, 10);
+        const b = randInt(1, 10);
+        return { question: `Simplify: ${a}x + ${b}x<br>Enter coefficient of x`, answer: a + b, topic: 'Combine Like Terms' };
+      },
+      distributive6: () => {
+        const a = randInt(2, 6);
+        const b = randInt(1, 10);
+        const c = randInt(1, 10);
+        return { question: `Expand: ${a}(x + ${b})<br>What is the constant term?`, answer: a * b, topic: 'Distributive Property' };
+      },
+      oneStepEquations6: () => {
+        const answer = randInt(1, 20);
+        const ops = [
+          { q: `x + ${randInt(1,15)} = ${answer + randInt(1,15)}`, gen: () => { const b = randInt(1,15); return { q: `x + ${b} = ${answer + b}`, a: answer }; }},
+          { q: `x - ${randInt(1,10)} = ${answer - randInt(1,10)}`, gen: () => { const b = randInt(1, answer-1); return { q: `x − ${b} = ${answer - b}`, a: answer }; }},
+          { q: `${randInt(2,6)}x = ${randInt(2,6) * answer}`, gen: () => { const b = randInt(2,6); return { q: `${b}x = ${b * answer}`, a: answer }; }}
+        ];
+        const op = randChoice(ops).gen();
+        return { question: `Solve: ${op.q}`, answer: op.a, topic: 'One-Step Equations' };
+      },
+      inequalities6: () => {
+        const x = randInt(1, 10);
+        const b = randInt(1, 10);
+        const sum = x + b;
+        const testVal = randInt(1, 20);
+        const satisfies = testVal + b > sum ? 0 : 1;
+        return { question: `Does x = ${testVal} satisfy: x + ${b} ≤ ${sum}?<br>Enter 1 for Yes, 0 for No`, answer: testVal <= x ? 1 : 0, topic: 'Inequalities' };
+      },
+      coordinatePlane6: () => {
+        const x = randInt(-10, 10);
+        const y = randInt(-10, 10);
+        const quadrant = x > 0 && y > 0 ? 1 : (x < 0 && y > 0 ? 2 : (x < 0 && y < 0 ? 3 : (x > 0 && y < 0 ? 4 : 0)));
+        if (quadrant === 0) return generators6.coordinatePlane6();
+        return { question: `Point (${x}, ${y}) is in which quadrant?<br>Enter 1, 2, 3, or 4`, answer: quadrant, topic: 'Coordinate Plane' };
+      },
+      distance6: () => {
+        const x1 = randInt(-10, 10);
+        const x2 = randInt(-10, 10);
+        const y = randInt(-10, 10);
+        return { question: `Distance from (${x1}, ${y}) to (${x2}, ${y})?`, answer: Math.abs(x2 - x1), topic: 'Distance' };
+      },
+      reflections6: () => {
+        const x = randInt(1, 10);
+        const y = randInt(1, 10);
+        const axis = Math.random() < 0.5 ? 'x' : 'y';
+        const answer = axis === 'x' ? -y : -x;
+        return { question: `Reflect (${x}, ${y}) over the ${axis}-axis.<br>What is the new ${axis === 'x' ? 'y' : 'x'}-coordinate?`, answer, topic: 'Reflections' };
+      },
+      polygonsCoord6: () => {
+        const x1 = randInt(0, 5);
+        const x2 = x1 + randInt(3, 8);
+        const y1 = randInt(0, 5);
+        const y2 = y1 + randInt(3, 8);
+        const width = x2 - x1;
+        const height = y2 - y1;
+        return { question: `Rectangle corners at (${x1},${y1}) and (${x2},${y2}).<br>What is the area?`, answer: width * height, topic: 'Polygons on Grid' };
+      },
+      areaTriangles6: () => {
+        const base = randInt(4, 20);
+        const height = randInt(4, 20);
+        return { question: `Triangle: base = ${base}, height = ${height}<br>Area = ?`, answer: (base * height) / 2, topic: 'Area of Triangles' };
+      },
+      areaParallelograms6: () => {
+        const base = randInt(4, 15);
+        const height = randInt(4, 15);
+        return { question: `Parallelogram: base = ${base}, height = ${height}<br>Area = ?`, answer: base * height, topic: 'Area of Parallelograms' };
+      },
+      areaTrapezoids6: () => {
+        const b1 = randInt(4, 12);
+        const b2 = randInt(4, 12);
+        const h = randInt(4, 10);
+        return { question: `Trapezoid: bases ${b1} and ${b2}, height ${h}<br>Area = ?`, answer: ((b1 + b2) * h) / 2, topic: 'Area of Trapezoids' };
+      },
+      surfaceArea6: () => {
+        const l = randInt(2, 8);
+        const w = randInt(2, 8);
+        const h = randInt(2, 8);
+        return { question: `Rectangular prism: ${l} × ${w} × ${h}<br>Surface area = ?`, answer: 2 * (l*w + w*h + l*h), topic: 'Surface Area' };
+      },
+      volume6: () => {
+        const l = randInt(2, 10);
+        const w = randInt(2, 10);
+        const h = randInt(2, 10);
+        return { question: `Rectangular prism: ${l} × ${w} × ${h}<br>Volume = ?`, answer: l * w * h, topic: 'Volume' };
+      },
+      mean6: () => {
+        const count = randInt(4, 6);
+        const nums = Array.from({length: count}, () => randInt(10, 100));
+        const sum = nums.reduce((a, b) => a + b, 0);
+        return { question: `Find the mean: ${nums.join(', ')}`, answer: sum / count, topic: 'Mean', tolerance: 0.01 };
+      },
+      median6: () => {
+        const count = randChoice([5, 7]);
+        const nums = Array.from({length: count}, () => randInt(10, 100)).sort((a,b) => a - b);
+        return { question: `Find the median: ${nums.join(', ')}`, answer: nums[Math.floor(count / 2)], topic: 'Median' };
+      },
+      range6: () => {
+        const nums = Array.from({length: randInt(4, 7)}, () => randInt(10, 100));
+        return { question: `Find the range: ${nums.join(', ')}`, answer: Math.max(...nums) - Math.min(...nums), topic: 'Range' };
+      },
+      dataInterpretation6: () => {
+        const data = Array.from({length: 5}, () => randInt(5, 30));
+        const total = data.reduce((a, b) => a + b, 0);
+        return { question: `Scores: ${data.join(', ')}<br>What is the total?`, answer: total, topic: 'Data Interpretation' };
       }
-    }
+    };
+
+    // ==================== UI FUNCTIONS ====================
+    // showScreen is defined in Parent Dashboard section below
 
     function selectGrade(grade) {
       currentGrade = grade;
@@ -868,30 +1754,46 @@
     }
 
     function renderTopics() {
-      const topics = currentGrade === 4 ? grade4Topics : grade6Topics;
+      const categories = currentGrade === 4 ? grade4Categories : grade6Categories;
+      const labels = currentGrade === 4 ? grade4Labels : grade6Labels;
       const gradeStats = stats[`grade${currentGrade}`];
-      const grid = document.getElementById('topics-grid');
-      
-      grid.innerHTML = topics.map(topic => {
-        const topicStat = gradeStats.byTopic[topic];
-        const isSelected = selectedTopics.includes(topic);
-        return `
-          <button class="topic-btn ${isSelected ? 'selected' : ''}" onclick="toggleTopic('${topic}')">
-            <div class="topic-name">${topicLabels[topic]}</div>
-            ${topicStat ? `<div class="topic-stats">${topicStat.correct}/${topicStat.total} correct</div>` : ''}
-          </button>
-        `;
-      }).join('');
-      
+      const container = document.getElementById('topics-container');
+      container.className = currentGrade === 6 ? 'grade-6' : '';
+
+      let html = '';
+      for (const [category, topics] of Object.entries(categories)) {
+        html += `<div class="category-header">${category}</div>`;
+        html += '<div class="topics-grid">';
+        for (const topic of topics) {
+          const topicStat = gradeStats.byTopic[topic];
+          const isSelected = selectedTopics.includes(topic);
+          html += `
+            <button class="topic-btn ${isSelected ? 'selected' : ''}" onclick="toggleTopic('${topic}')">
+              <div class="topic-name">${labels[topic]}</div>
+              ${topicStat ? `<div class="topic-stats">${topicStat.correct}/${topicStat.total}</div>` : ''}
+            </button>
+          `;
+        }
+        html += '</div>';
+      }
+      container.innerHTML = html;
       updateStartButton();
     }
 
     function toggleTopic(topic) {
       const index = selectedTopics.indexOf(topic);
-      if (index === -1) {
-        selectedTopics.push(topic);
+      if (index === -1) selectedTopics.push(topic);
+      else selectedTopics.splice(index, 1);
+      renderTopics();
+    }
+
+    function toggleSelectAll() {
+      const categories = currentGrade === 4 ? grade4Categories : grade6Categories;
+      const allTopics = Object.values(categories).flat();
+      if (selectedTopics.length === allTopics.length) {
+        selectedTopics = [];
       } else {
-        selectedTopics.splice(index, 1);
+        selectedTopics = [...allTopics];
       }
       renderTopics();
     }
@@ -901,55 +1803,102 @@
     }
 
     function startPractice() {
+      // Reset quiz state
+      currentQuestionIndex = 0;
+      quizCorrect = 0;
+      quizStreak = 0;
+      quizBestStreak = 0;
+      topicsUsedInQuiz = new Set();
+      
+      // Pre-generate all 20 questions
+      quizQuestions = [];
+      const generators = currentGrade === 4 ? generators4 : generators6;
+      
+      for (let i = 0; i < QUESTIONS_PER_QUIZ; i++) {
+        const topic = randChoice(selectedTopics);
+        const problem = { ...generators[topic](), topicKey: topic };
+        quizQuestions.push(problem);
+        topicsUsedInQuiz.add(topic);
+      }
+      
       showScreen('practice-screen');
-      generateProblem();
+      showCurrentQuestion();
       document.getElementById('answer-input').focus();
     }
 
-    function generateProblem() {
-      const topic = selectedTopics[Math.floor(Math.random() * selectedTopics.length)];
-      currentProblem = { ...generators[topic](), topicKey: topic };
+    function showCurrentQuestion() {
+      currentProblem = quizQuestions[currentQuestionIndex];
       
       document.getElementById('topic-tag').textContent = currentProblem.topic;
-      document.getElementById('question').textContent = currentProblem.question;
+      document.getElementById('question').innerHTML = currentProblem.question;
       document.getElementById('answer-input').value = '';
       document.getElementById('answer-input').className = 'answer-input';
       document.getElementById('feedback').style.display = 'none';
       document.getElementById('submit-btn').disabled = false;
       document.getElementById('answer-input').focus();
       
-      updatePracticeStats();
+      updateQuizProgress();
+    }
+
+    function updateQuizProgress() {
+      document.getElementById('question-progress').textContent = `${currentQuestionIndex + 1}/${QUESTIONS_PER_QUIZ}`;
+      document.getElementById('correct-count').textContent = quizCorrect;
+      document.getElementById('streak-count').textContent = `🔥 ${quizStreak}`;
+      
+      const progressPercent = (currentQuestionIndex / QUESTIONS_PER_QUIZ) * 100;
+      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+    }
+
+    function generateProblem() {
+      // This is now just for compatibility, actual logic is in showCurrentQuestion
+      showCurrentQuestion();
     }
 
     function submitAnswer() {
       const input = document.getElementById('answer-input');
-      const userAnswer = parseFloat(input.value);
-      
+      let userAnswer = input.value.trim();
+
+      // Handle special answer mappings
+      if (currentProblem.answerMap && currentProblem.answerMap[userAnswer] !== undefined) {
+        userAnswer = currentProblem.answerMap[userAnswer];
+      } else {
+        userAnswer = parseFloat(userAnswer);
+      }
+
       if (isNaN(userAnswer)) return;
-      
-      const isCorrect = Math.abs(userAnswer - currentProblem.answer) < 0.01;
+
+      const tolerance = currentProblem.tolerance || 0.001;
+      const isCorrect = Math.abs(userAnswer - currentProblem.answer) < tolerance;
       const gradeKey = `grade${currentGrade}`;
       const gradeStats = stats[gradeKey];
       const topicStats = gradeStats.byTopic[currentProblem.topicKey] || { correct: 0, total: 0 };
 
       if (isCorrect) {
         input.className = 'answer-input correct';
-        showFeedback('correct', encouragements[Math.floor(Math.random() * encouragements.length)]);
+        showFeedback('correct', randChoice(encouragements));
         showConfetti();
+
+        quizCorrect++;
+        quizStreak++;
+        quizBestStreak = Math.max(quizBestStreak, quizStreak);
         
+        // Update persistent stats
         gradeStats.correct++;
         gradeStats.total++;
         gradeStats.streak++;
         gradeStats.bestStreak = Math.max(gradeStats.bestStreak, gradeStats.streak);
         topicStats.correct++;
         topicStats.total++;
-        
+
         document.getElementById('submit-btn').disabled = true;
-        setTimeout(generateProblem, 1500);
+        setTimeout(nextQuestion, 1200);
       } else {
         input.className = 'answer-input incorrect';
-        showFeedback('incorrect', tryAgains[Math.floor(Math.random() * tryAgains.length)]);
+        showFeedback('incorrect', randChoice(tryAgains));
+
+        quizStreak = 0;
         
+        // Update persistent stats
         gradeStats.total++;
         gradeStats.streak = 0;
         topicStats.total++;
@@ -958,36 +1907,102 @@
       gradeStats.byTopic[currentProblem.topicKey] = topicStats;
       checkAchievements();
       saveStats();
-      updatePracticeStats();
+      updateQuizProgress();
+    }
+
+    function nextQuestion() {
+      currentQuestionIndex++;
+      
+      if (currentQuestionIndex >= QUESTIONS_PER_QUIZ) {
+        showQuizComplete();
+      } else {
+        showCurrentQuestion();
+      }
+    }
+
+    function skipQuestion() {
+      // Mark as attempted but not correct
+      const gradeKey = `grade${currentGrade}`;
+      const gradeStats = stats[gradeKey];
+      const topicStats = gradeStats.byTopic[currentProblem.topicKey] || { correct: 0, total: 0 };
+      
+      gradeStats.total++;
+      gradeStats.streak = 0;
+      topicStats.total++;
+      gradeStats.byTopic[currentProblem.topicKey] = topicStats;
+      
+      quizStreak = 0;
+      saveStats();
+      
+      nextQuestion();
+    }
+
+    function showQuizComplete() {
+      showScreen('complete-screen');
+      
+      const percentage = Math.round((quizCorrect / QUESTIONS_PER_QUIZ) * 100);
+      
+      document.getElementById('final-score').textContent = quizCorrect;
+      document.getElementById('total-questions').textContent = QUESTIONS_PER_QUIZ;
+      document.getElementById('complete-percentage').textContent = `${percentage}%`;
+      document.getElementById('quiz-best-streak').textContent = quizBestStreak;
+      document.getElementById('topics-covered').textContent = topicsUsedInQuiz.size;
+      
+      // Set emoji and message based on score
+      let emoji, message;
+      if (percentage >= 90) {
+        emoji = '🏆';
+        message = 'Outstanding! You\'re a math superstar!';
+      } else if (percentage >= 80) {
+        emoji = '🌟';
+        message = 'Excellent work! Keep it up!';
+      } else if (percentage >= 70) {
+        emoji = '😊';
+        message = 'Good job! Practice makes perfect!';
+      } else if (percentage >= 60) {
+        emoji = '💪';
+        message = 'Nice effort! Keep practicing!';
+      } else {
+        emoji = '📚';
+        message = 'Keep learning! You\'ll get better!';
+      }
+      
+      document.getElementById('complete-emoji').textContent = emoji;
+      document.getElementById('complete-message').textContent = message;
+    }
+
+    function restartQuiz() {
+      startPractice();
+    }
+
+    function endQuiz() {
+      if (currentQuestionIndex > 0) {
+        if (confirm(`You've completed ${currentQuestionIndex}/${QUESTIONS_PER_QUIZ} questions. Are you sure you want to end the quiz?`)) {
+          showScreen('topics-screen');
+        }
+      } else {
+        showScreen('topics-screen');
+      }
     }
 
     function showFeedback(type, message) {
       const feedback = document.getElementById('feedback');
       feedback.className = `feedback ${type}`;
-      feedback.innerHTML = type === 'incorrect' 
-        ? `${message}<span class="hint">Hint: Try again!</span>`
+      feedback.innerHTML = type === 'incorrect'
+        ? `${message}<span class="hint">The answer is ${currentProblem.answer}</span>`
         : message;
       feedback.style.display = 'block';
-    }
-
-    function updatePracticeStats() {
-      const gradeStats = stats[`grade${currentGrade}`];
-      const accuracy = gradeStats.total > 0 ? Math.round((gradeStats.correct / gradeStats.total) * 100) : 0;
-      
-      document.getElementById('correct-count').textContent = gradeStats.correct;
-      document.getElementById('streak-count').textContent = `🔥 ${gradeStats.streak}`;
-      document.getElementById('accuracy-count').textContent = `${accuracy}%`;
     }
 
     function updateStatsScreen() {
       const gradeStats = stats[`grade${currentGrade}`];
       const accuracy = gradeStats.total > 0 ? Math.round((gradeStats.correct / gradeStats.total) * 100) : 0;
-      
+
       document.getElementById('total-correct').textContent = gradeStats.correct;
       document.getElementById('total-tried').textContent = gradeStats.total;
       document.getElementById('total-accuracy').textContent = `${accuracy}%`;
       document.getElementById('best-streak').textContent = `🔥 ${gradeStats.bestStreak}`;
-      
+
       document.getElementById('badges-grid').innerHTML = allAchievements.map(a => `
         <div class="badge ${stats.achievements.includes(a.id) ? 'earned' : 'locked'}">
           <span class="badge-icon">${stats.achievements.includes(a.id) ? a.icon : '🔒'}</span>
@@ -1017,15 +2032,14 @@
     function showConfetti() {
       const container = document.getElementById('confetti-container');
       container.innerHTML = '';
-      
       const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#95E1D3', '#F38181', '#AA96DA'];
-      
+
       for (let i = 0; i < 50; i++) {
         const piece = document.createElement('div');
         piece.className = 'confetti-piece';
         piece.style.left = `${Math.random() * 100}%`;
         piece.style.animationDelay = `${Math.random() * 0.5}s`;
-        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.backgroundColor = randChoice(colors);
         piece.style.transform = `rotate(${Math.random() * 360}deg)`;
         container.appendChild(piece);
       }
@@ -1034,15 +2048,241 @@
     }
 
     function saveStats() {
-      localStorage.setItem('mathQuestStats', JSON.stringify(stats));
+      localStorage.setItem('mathQuestStats2', JSON.stringify(stats));
     }
 
     // Event listeners
     document.getElementById('answer-input').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        submitAnswer();
-      }
+      if (e.key === 'Enter') submitAnswer();
     });
+
+    // ==================== PARENT DASHBOARD FUNCTIONS ====================
+    let currentProgressTab = 4;
+
+    function showProgressTab(grade) {
+      currentProgressTab = grade;
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      renderProgressContent();
+    }
+
+    function renderProgressContent() {
+      const gradeStats = stats[`grade${currentProgressTab}`];
+      const labels = currentProgressTab === 4 ? grade4Labels : grade6Labels;
+      const categories = currentProgressTab === 4 ? grade4Categories : grade6Categories;
+      const accuracy = gradeStats.total > 0 ? Math.round((gradeStats.correct / gradeStats.total) * 100) : 0;
+
+      let html = `
+        <div class="progress-row">
+          <span class="progress-label">Total Correct</span>
+          <span class="progress-value highlight">${gradeStats.correct}</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">Total Attempted</span>
+          <span class="progress-value">${gradeStats.total}</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">Accuracy</span>
+          <span class="progress-value">${accuracy}%</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">Current Streak</span>
+          <span class="progress-value">🔥 ${gradeStats.streak}</span>
+        </div>
+        <div class="progress-row">
+          <span class="progress-label">Best Streak</span>
+          <span class="progress-value">🏆 ${gradeStats.bestStreak}</span>
+        </div>
+      `;
+
+      // Topic breakdown
+      const topicEntries = Object.entries(gradeStats.byTopic);
+      if (topicEntries.length > 0) {
+        html += `<div class="topic-progress">`;
+        html += `<div class="topic-progress-header">📚 Topic Breakdown</div>`;
+        html += `<div class="topic-progress-grid">`;
+
+        // Sort by accuracy (weakest first)
+        const sortedTopics = topicEntries.sort((a, b) => {
+          const accA = a[1].total > 0 ? a[1].correct / a[1].total : 0;
+          const accB = b[1].total > 0 ? b[1].correct / b[1].total : 0;
+          return accA - accB;
+        });
+
+        for (const [topic, data] of sortedTopics) {
+          const topicAcc = data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0;
+          const scoreClass = topicAcc < 50 ? 'weak' : (topicAcc >= 80 ? 'strong' : '');
+          html += `
+            <div class="topic-progress-item">
+              <span class="topic-progress-name">${labels[topic] || topic}</span>
+              <span class="topic-progress-score ${scoreClass}">${data.correct}/${data.total} (${topicAcc}%)</span>
+            </div>
+          `;
+        }
+
+        html += `</div></div>`;
+
+        // Identify weak areas
+        const weakTopics = sortedTopics.filter(([t, d]) => d.total >= 3 && (d.correct / d.total) < 0.6);
+        if (weakTopics.length > 0) {
+          html += `<div style="margin-top: 20px; padding: 16px; background: rgba(255,107,107,0.1); border-radius: 12px;">`;
+          html += `<strong style="color: var(--accent-coral);">⚠️ Needs Practice:</strong><br>`;
+          html += weakTopics.map(([t]) => labels[t] || t).join(', ');
+          html += `</div>`;
+        }
+
+        // Identify strong areas
+        const strongTopics = sortedTopics.filter(([t, d]) => d.total >= 5 && (d.correct / d.total) >= 0.8);
+        if (strongTopics.length > 0) {
+          html += `<div style="margin-top: 12px; padding: 16px; background: rgba(78,205,196,0.1); border-radius: 12px;">`;
+          html += `<strong style="color: #00897B;">💪 Mastered:</strong><br>`;
+          html += strongTopics.map(([t]) => labels[t] || t).join(', ');
+          html += `</div>`;
+        }
+      } else {
+        html += `<div style="margin-top: 16px; color: var(--text-secondary); text-align: center;">No practice data yet. Start practicing to see progress!</div>`;
+      }
+
+      document.getElementById('progress-content').innerHTML = html;
+    }
+
+    function generateExportCode() {
+      const data = {
+        v: 1, // version
+        t: Date.now(), // timestamp
+        s: stats // stats
+      };
+      const jsonStr = JSON.stringify(data);
+      const encoded = btoa(encodeURIComponent(jsonStr));
+      document.getElementById('export-code').textContent = encoded;
+    }
+
+    function copyExportCode() {
+      const code = document.getElementById('export-code').textContent;
+      if (!code) {
+        showToast('Generate a code first!');
+        return;
+      }
+      navigator.clipboard.writeText(code).then(() => {
+        showToast('Code copied to clipboard! 📋');
+      }).catch(() => {
+        showToast('Failed to copy. Please select and copy manually.');
+      });
+    }
+
+    function importProgressCode() {
+      const code = document.getElementById('import-code-input').value.trim();
+      if (!code) {
+        showToast('Please enter a code first!');
+        return;
+      }
+
+      try {
+        const jsonStr = decodeURIComponent(atob(code));
+        const data = JSON.parse(jsonStr);
+
+        if (!data.s || !data.s.grade4 || !data.s.grade6) {
+          throw new Error('Invalid format');
+        }
+
+        // Show imported data
+        const importedStats = data.s;
+        const importDate = new Date(data.t).toLocaleString();
+
+        const g4 = importedStats.grade4;
+        const g6 = importedStats.grade6;
+
+        let summary = `📅 Exported: ${importDate}\n\n`;
+        summary += `📚 Grade 4:\n`;
+        summary += `   • Correct: ${g4.correct}/${g4.total}\n`;
+        summary += `   • Best Streak: ${g4.bestStreak}\n\n`;
+        summary += `📚 Grade 6:\n`;
+        summary += `   • Correct: ${g6.correct}/${g6.total}\n`;
+        summary += `   • Best Streak: ${g6.bestStreak}\n\n`;
+        summary += `Merge this progress with current data?`;
+
+        if (confirm(summary)) {
+          // Merge stats
+          mergeStats(importedStats);
+          saveStats();
+          renderProgressContent();
+          showToast('Progress imported successfully! ✅');
+        }
+      } catch (e) {
+        showToast('Invalid code. Please check and try again.');
+        console.error(e);
+      }
+    }
+
+    function mergeStats(imported) {
+      // Merge grade 4
+      stats.grade4.correct += imported.grade4.correct;
+      stats.grade4.total += imported.grade4.total;
+      stats.grade4.bestStreak = Math.max(stats.grade4.bestStreak, imported.grade4.bestStreak);
+
+      for (const [topic, data] of Object.entries(imported.grade4.byTopic || {})) {
+        if (!stats.grade4.byTopic[topic]) {
+          stats.grade4.byTopic[topic] = { correct: 0, total: 0 };
+        }
+        stats.grade4.byTopic[topic].correct += data.correct;
+        stats.grade4.byTopic[topic].total += data.total;
+      }
+
+      // Merge grade 6
+      stats.grade6.correct += imported.grade6.correct;
+      stats.grade6.total += imported.grade6.total;
+      stats.grade6.bestStreak = Math.max(stats.grade6.bestStreak, imported.grade6.bestStreak);
+
+      for (const [topic, data] of Object.entries(imported.grade6.byTopic || {})) {
+        if (!stats.grade6.byTopic[topic]) {
+          stats.grade6.byTopic[topic] = { correct: 0, total: 0 };
+        }
+        stats.grade6.byTopic[topic].correct += data.correct;
+        stats.grade6.byTopic[topic].total += data.total;
+      }
+
+      // Merge achievements
+      imported.achievements.forEach(a => {
+        if (!stats.achievements.includes(a)) {
+          stats.achievements.push(a);
+        }
+      });
+    }
+
+    function confirmReset() {
+      if (confirm('⚠️ Are you sure you want to reset ALL progress?\n\nThis cannot be undone!')) {
+        if (confirm('Really delete everything? Type OK to confirm.')) {
+          stats = {
+            grade4: { correct: 0, total: 0, streak: 0, bestStreak: 0, byTopic: {} },
+            grade6: { correct: 0, total: 0, streak: 0, bestStreak: 0, byTopic: {} },
+            achievements: []
+          };
+          saveStats();
+          renderProgressContent();
+          showToast('Progress reset! 🔄');
+        }
+      }
+    }
+
+    function showToast(message) {
+      const existing = document.querySelector('.toast');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    // Initialize progress content when opening parent dashboard
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(screenId).classList.add('active');
+      if (screenId === 'stats-screen') updateStatsScreen();
+      if (screenId === 'parent-screen') renderProgressContent();
+    }
   </script>
 </body>
 </html>
